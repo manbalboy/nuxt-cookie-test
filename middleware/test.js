@@ -1,9 +1,9 @@
 export default function ({ store, redirect, $cookiz, req}) {
-  if(req.headers?.cookie) {
+  if(req?.headers?.cookie) {
 
     const cookies = parseCookie(req?.headers?.cookie);
+    console.log(">>>>>",cookies)
   }
-    // $cookiz.set('test','bbb', {httpOnly : false})
 }
 
 const parseCookie = str =>

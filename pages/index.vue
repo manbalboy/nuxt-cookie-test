@@ -1,21 +1,30 @@
 <template>
   <div>
+    <input :value="testValue">
     <button @click="removeCookie('notHttpOnly')">쿠키 삭제</button>
     <input :value="changeCookieValueData">
     <button @click="changeCookie('notHttpOnly')">쿠키 변경</button>
+    <button @click="$fetch()">fetch</button>
+    <nuxt-link to="/a">변경</nuxt-link>
   </div>
 </template>
 
 <script>
 export default {
   name: 'IndexPage',
-  async asyncData({$axios}) {
-    const test = await $axios.$get('http://localhost:3000/server-middleware');
+  activated() {
+    if (this.$fetchState.timestamp <= Date.now() - 3000) {
+      this.$fetch();
+    }
   },
-
+  async fetch() {
+    this.testValue = await this.$axios.$get('http://localhost:3000/server-middleware');
+  },
+  fetchKey: 'site-sidebar',
   data() {
     return {
       changeCookieValueData: '변경',
+      testValue  : '',
     }
   },
       
