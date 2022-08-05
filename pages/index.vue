@@ -12,12 +12,24 @@
 <script>
 export default {
   name: 'IndexPage',
-  activated() {
-    if (this.$fetchState.timestamp <= Date.now() - 3000) {
-      this.$fetch();
-    }
-  },
+  // activated() {
+  //   if (this.$fetchState.timestamp <= Date.now() - 3000) {
+  //     this.$fetch();
+  //   }
+  // },
   async fetch() {
+    console.log("server!!!!!!!!","server");
+    this.testValue = await this.$axios.$get('http://localhost:3000/server-middleware');
+    this.testValue = await this.$axios.$get('http://localhost:3000/server-middleware');
+    this.testValue = await this.$axios.$get('http://localhost:3000/server-middleware');
+    this.testValue = await this.$axios.$get('http://localhost:3000/server-middleware');
+    this.testValue = await this.$axios.$get('http://localhost:3000/server-middleware');
+    this.testValue = await this.$axios.$get('http://localhost:3000/server-middleware');
+    this.testValue = await this.$axios.$get('http://localhost:3000/server-middleware');
+    this.testValue = await this.$axios.$get('http://localhost:3000/server-middleware');
+    this.testValue = await this.$axios.$get('http://localhost:3000/server-middleware');
+    this.testValue = await this.$axios.$get('http://localhost:3000/server-middleware');
+    this.testValue = await this.$axios.$get('http://localhost:3000/server-middleware');
     this.testValue = await this.$axios.$get('http://localhost:3000/server-middleware');
   },
   fetchKey: 'site-sidebar',
