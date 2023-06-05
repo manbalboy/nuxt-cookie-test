@@ -1,53 +1,37 @@
 <template>
   <div>
-    <input :value="testValue">
-    <button @click="removeCookie('notHttpOnly')">쿠키 삭제</button>
-    <input :value="changeCookieValueData">
-    <button @click="changeCookie('notHttpOnly')">쿠키 변경</button>
-    <button @click="$fetch()">fetch</button>
-    <nuxt-link to="/a">변경</nuxt-link>
+    <Lottie
+      :path="test"
+    ></Lottie>
+    <!-- <Lottie path="https://stagestatic11.samsungcard.com/wcms/home/scard/image/personal/Lottie_AAP1762.json"></Lottie>
+    <Lottie path="https://stagestatic11.samsungcard.com/wcms/home/scard/image/personal/Lottie_AAP1762.json"></Lottie>
+    <Lottie path="https://stagestatic11.samsungcard.com/wcms/home/scard/image/personal/Lottie_AAP1762.json"></Lottie>
+    <Lottie path="https://stagestatic11.samsungcard.com/wcms/home/scard/image/personal/Lottie_AAP1762.json"></Lottie>
+    <Lottie path="https://stagestatic11.samsungcard.com/wcms/home/scard/image/personal/Lottie_AAP1762.json"></Lottie>
+    <Lottie path="https://stagestatic11.samsungcard.com/wcms/home/scard/image/personal/Lottie_AAP1762.json"></Lottie> -->
+    <nuxt-link to="/indexa">변경a</nuxt-link>
   </div>
 </template>
 
 <script>
+import Lottie from "@/components/Lottie";
 export default {
-  name: 'IndexPage',
-  // activated() {
-  //   if (this.$fetchState.timestamp <= Date.now() - 3000) {
-  //     this.$fetch();
-  //   }
-  // },
-  async fetch() {
-    console.log("server!!!!!!!!","server");
-    this.testValue = await this.$axios.$get('http://localhost:3000/server-middleware');
-    this.testValue = await this.$axios.$get('http://localhost:3000/server-middleware');
-    this.testValue = await this.$axios.$get('http://localhost:3000/server-middleware');
-    this.testValue = await this.$axios.$get('http://localhost:3000/server-middleware');
-    this.testValue = await this.$axios.$get('http://localhost:3000/server-middleware');
-    this.testValue = await this.$axios.$get('http://localhost:3000/server-middleware');
-    this.testValue = await this.$axios.$get('http://localhost:3000/server-middleware');
-    this.testValue = await this.$axios.$get('http://localhost:3000/server-middleware');
-    this.testValue = await this.$axios.$get('http://localhost:3000/server-middleware');
-    this.testValue = await this.$axios.$get('http://localhost:3000/server-middleware');
-    this.testValue = await this.$axios.$get('http://localhost:3000/server-middleware');
-    this.testValue = await this.$axios.$get('http://localhost:3000/server-middleware');
+  name: "IndexPage",
+  components: {
+    Lottie,
   },
-  fetchKey: 'site-sidebar',
   data() {
     return {
-      changeCookieValueData: '변경',
-      testValue  : '',
-    }
+      path: "https://stagestatic11.samsungcard.com/wcms/home/scard/image/personal/Lottie_AAP1762.json",
+      test: "",
+    };
   },
-      
-  methods : {
-    removeCookie(name) {
-      this.$cookiz.remove(name);
-    },
+  mounted() {
+    setTimeout(()=>{
+      this.test = this.path
+    },1000);
+  },
 
-    changeCookie(name) {
-      this.$cookiz.set(name, this.changeCookieValueData);
-    }
-  }
-}
+  methods: {},
+};
 </script>

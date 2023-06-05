@@ -1,17 +1,18 @@
-export default function ({ $axios, redirect }) {
+export default function ({ $axios, redirect, route ,app}) {
 
-
+  $axios.onRequest(config => {
+    console.log(">>>>>>>>>>>>>route",app.context.route.path)
+  })
     $axios.onResponse(response => {
         // console.log(">>>>>>>>>>",response);
 
 
 
-        return Promise.reject(response.data);
+        // return Promise.reject(response.data);
       })
 
 
       $axios.onResponseError(response => {
-        console.log("onResponseError>>>>>>>>>>",response);
 
 
 
@@ -19,7 +20,5 @@ export default function ({ $axios, redirect }) {
       })
 
     $axios.onError(error => {
-     console.log(error, "><<<<<<<<<<");
-    //  redirect('/testtest')
     })
   }
